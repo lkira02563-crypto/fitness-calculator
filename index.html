@@ -8,13 +8,49 @@
 <meta name="keywords" content="fitness calculator, BMI calculator, calorie calculator, TDEE calculator, maintenance calories">
 
 <meta name="author" content="Fitness Calculator">
-
+<meta property="og:title" content="Free Fitness Calculator">
+<meta property="og:description" content="Calculate BMI and daily calorie needs instantly.">
+<meta property="og:type" content="website">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta name="google-adsense-account" content="ca-pub-1478424245416004">
  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1478424245416004"
      crossorigin="anonymous"></script>
    <script src="script.js" defer></script>
+ <script>
+window.onload = function() {
+    const params = new URLSearchParams(window.location.search);
+
+    if(params.has("weight")) {
+        document.getElementById("weight").value = params.get("weight");
+    }
+
+    if(params.has("height")) {
+        document.getElementById("height").value = params.get("height");
+    }
+
+    if(params.has("age")) {
+        document.getElementById("age").value = params.get("age");
+    }
+
+    if(params.has("activity")) {
+        document.getElementById("activity").value = params.get("activity");
+    }
+};
+</script>
+ <script>
+function generateShareLink() {
+
+    const weight = document.getElementById("weight").value;
+    const height = document.getElementById("height").value;
+    const age = document.getElementById("age").value;
+    const activity = document.getElementById("activity").value;
+
+    const link = `${window.location.origin}${window.location.pathname}?weight=${weight}&height=${height}&age=${age}&activity=${activity}`;
+
+    document.getElementById("shareLink").value = link;
+}
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Online Fitness Calculator</title>
@@ -120,6 +156,16 @@ label {
 </style>
 </head>
 <body>
+ <h1>Fitness Calculator</h1>
+
+<p>
+This free fitness calculator helps you estimate your BMI, daily calorie needs,
+and total daily energy expenditure (TDEE). Enter your height, weight, age,
+and activity level to calculate your maintenance calories.
+</p>
+ <h2>BMI Calculator</h2>
+
+<h2>TDEE / Calorie Calculator</h2>
   <div id="results" style="margin-top:20px; text-align:center;"></div>
 <div class="container">
   <p class="title">Welcome to Online Fitness Calculator</p>
